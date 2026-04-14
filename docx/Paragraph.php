@@ -27,7 +27,7 @@ class Paragraph extends AbstractParagraph
     /** @inheritdoc */
     public function parse()
     {
-        $trs = $this->p->xpath('w:r');
+        $trs = $this->p->xpath('.//w:r');
         foreach ($trs as $tr) {
             $textRun = new TextRun($this->docx, $tr);
             $this->texts[] = $textRun;
