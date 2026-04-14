@@ -22,7 +22,13 @@ class Heading extends AbstractParagraph
      */
     public function parse()
     {
-        $this->text = (string) $this->p->xpath('w:r/w:t')[0];
+        # CompuGO --- EDIT BEGIN
+        # $this->text = (string) $this->p->xpath('w:r/w:t')[0];
+		$textarray = $this->p->xpath('w:r/w:t');
+		foreach ($textarray as $txt) {
+			$this->text .= $txt;
+		}
+		# CompuGO --- EDIT END
         $style = $this->p->xpath('w:pPr/w:pStyle');
         $styleID = $style[0]->attributes('w', true)->val;
         $this->level =  substr($this->docx->getStyles()->getStyleName($styleID), -1); // translates to "heading X"

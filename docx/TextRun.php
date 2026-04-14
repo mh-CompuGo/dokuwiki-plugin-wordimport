@@ -36,11 +36,10 @@ class TextRun // this is not a paragraph!
         $br = $tr->xpath('w:br');
         if (!empty($br)) {
             $this->text = $newline;
-            return;
         }
 
         $this->parseFormatting($tr);
-        $this->text = (string)($tr->xpath('w:t')[0] ?? '');
+        $this->text .= (string)($tr->xpath('w:t')[0] ?? '');
     }
 
     /**
