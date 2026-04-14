@@ -37,6 +37,11 @@ class TextRun // this is not a paragraph!
         if (!empty($br)) {
             $this->text = $newline;
         }
+        
+        $tab = $tr->xpath('w:tab');
+        if (!empty($tab)) {
+            $this->text = ' ';
+        }
 
         $this->parseFormatting($tr);
         $this->text .= (string)($tr->xpath('w:t')[0] ?? '');
