@@ -38,8 +38,9 @@ class Document extends AbstractXMLFile
 
             $this->text .= $obj; // toString
             $last = $obj;
-        }
-
+            }
+            
+        $this->text = preg_replace('/ +/', ' ', $this->text);
         $this->text .= "\n"; // add a final newline
     }
 
